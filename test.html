@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Arquitectura</title>
+    <style>
+        /* Estilos Base - Minimalismo Arquitectónico */
+        :root {
+            --bg-color: #fafafa;
+            --text-color: #1a1a1a;
+            --accent: #555;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        p {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        /* Grid Estilo Instagram (Mobile First) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Fuerza 3 columnas exactas */
+            gap: 2px;
+            /* Separación milimétrica clásica de Instagram */
+            padding: 2px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Ajuste para Desktop (Monitores más grandes) */
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                /* Más columnas si hay espacio */
+                gap: 15px;
+                /* Más respiro visual en PC */
+                padding: 20px;
+            }
+        }
+
+        .grid-item {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+            background: #eee;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Pop-up (Modal) Técnico */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                flex-direction: row;
+            }
+        }
+
+        .modal-image {
+            flex: 2;
+            background: #000;
+            display: flex;
+            align-items: center;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .modal-info {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            border-left: 1px solid #eee;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #1a1a1a;
+            line-height: 1;
+            z-index: 10;
+        }
+
+        .modal-info h2 {
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .tech-specs {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .tech-specs li {
+            margin-bottom: 12px;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        .tech-specs strong {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Estudio Arquitectura</h1>
+        <p>Portafolio de Proyectos</p>
+    </header>
+
+    <div class="grid-container" id="portfolio-grid">
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <span class="modal-close" id="close-modal">&times;</span>
+            <div class="modal-image">
+                <img id="modal-img" src="" alt="Proyecto">
+            </div>
+            <div class="modal-info">
+                <h2 id="modal-title">Título del Proyecto</h2>
+                <p id="modal-desc" style="font-size: 14px; color: #555;">Descripción detallada del proyecto y su
+                    entorno.</p>
+                <ul class="tech-specs">
+                    <li><strong>Ubicación</strong> <span id="modal-loc">...</span></li>
+                    <li><strong>Superficie</strong> <span id="modal-area">...</span></li>
+                    <li><strong>Año</strong> <span id="modal-year">...</span></li>
+                    <li><strong>Materialidad</strong> <span id="modal-mat">...</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulador de la Base de Datos (datos.json)
+        const proyectos = [
+            {
+                id: 1,
+                imagen: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                titulo: "Casa Sur Valdivia",
+                descripcion: "Diseño optimizado para luz natural y eficiencia térmica en el clima lluvioso del sur de Chile.",
+                ubicacion: "Valdivia, Región de Los Ríos",
+                area: "180 m²",
+                year: "2025",
+                materiales: "Madera Termotratada, Hormigón Visto"
+            },
+            {
+                id: 2,
+                imagen: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                titulo: "Pabellón Minimalista",
+                descripcion: "Estructura abierta que dialoga con el entorno boscoso.",
+                ubicacion: "Frutillar, Chile",
+                area: "90 m²",
+                year: "2024",
+                materiales: "Acero, Cristal Templado"
+            },
+            {
+                id: 3,
+                imagen: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                titulo: "Edificio Centro",
+                descripcion: "Remodelación de fachada y redistribución de planta libre para uso de oficinas corporativas.",
+                ubicacion: "Santiago, Chile",
+                area: "450 m²",
+                year: "2023",
+                materiales: "Hormigón, Aluminio"
+            }
+        ];
+
+        const grid = document.getElementById('portfolio-grid');
+        const modal = document.getElementById('modal');
+        const closeModal = document.getElementById('close-modal');
+
+        // Renderizar la grilla
+        proyectos.forEach(proyecto => {
+            const div = document.createElement('div');
+            div.className = 'grid-item';
+            div.innerHTML = `<img src="${proyecto.imagen}" alt="${proyecto.titulo}">`;
+
+            // Evento para abrir el pop-up
+            div.addEventListener('click', () => {
+                document.getElementById('modal-img').src = proyecto.imagen;
+                document.getElementById('modal-title').innerText = proyecto.titulo;
+                document.getElementById('modal-desc').innerText = proyecto.descripcion;
+                document.getElementById('modal-loc').innerText = proyecto.ubicacion;
+                document.getElementById('modal-area').innerText = proyecto.area;
+                document.getElementById('modal-year').innerText = proyecto.year;
+                document.getElementById('modal-mat').innerText = proyecto.materiales;
+
+                modal.style.display = 'flex';
+            });
+
+            grid.appendChild(div);
+        });
+
+        // Cerrar el modal
+        closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
+      "title": "Casa Sur Valdivia",
+      "category": "Residencial",
+      "description": "Diseño optimizado para luz natural y eficiencia térmica en el clima lluvioso del sur de Chile. El uso de materiales locales permite una integración orgánica con el paisaje.",
+      "location": "Valdivia, Chile",
+      "area": "180 m²",
+      "year": "2025",
+      "materiality": "Madera Termotratada, Hormigón Visto"
+    },
+    {
+      "id": 2,
+      "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
+      "title": "Pabellón Minimalista",
+      "category": "Comercial",
+      "description": "Estructura abierta que dialoga con el entorno boscoso.",
+      "location": "Frutillar, Chile",
+      "area": "90 m²",
+      "year": "2024",
+      "materiality": "Acero, Cristal Templado"
+    }
+  ]
+}

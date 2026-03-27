@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main # Ensure this matches your default branch
+
+media_folder: "public/images/uploads" # Media files will be stored in the repo under public/images/uploads
+public_folder: "/images/uploads" # The src attribute for images will use this path
+
+collections:
+  - name: "content"
+    label: "Contenido"
+    files:
+      - label: "Lista de Proyectos"
+        name: "projects_list"
+        file: "content/projects.json"
+        fields:
+          - name: projects
+            label: Proyectos
+            widget: list
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Categoría", name: "category", widget: "select", options: ["Residencial", "Comercial", "Oficinas", "Público"] }
+              - { label: "Imagen Principal", name: "image", widget: "image" }
+              - { label: "Descripción", name: "description", widget: "text" }
+              - { label: "Ubicación", name: "location", widget: "string" }
+              - { label: "Superficie", name: "area", widget: "string" }
+              - { label: "Año", name: "year", widget: "string" }
+              - { label: "Materiales", name: "materiality", widget: "string" }

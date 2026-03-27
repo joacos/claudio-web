@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Arquitectura | Portafolio</title>
+    <link rel="stylesheet" href="/style.css">
+    <!-- Google Fonts: Inter and Outfit for a modern architectural feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="logo">Claudio <span class="accent">Arq.</span></h1>
+            <nav class="main-nav">
+                <a href="#grid" class="active">Proyectos</a>
+                <a href="#about">Estudio</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="grid" class="portfolio-section">
+            <div class="grid-container" id="portfolio-grid">
+                <!-- Items will be injected here via main.js -->
+                <div class="loader">Cargando portafolio...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Project Details -->
+    <div class="modal-overlay" id="project-modal" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Cerrar modal" id="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-img" src="" alt="Vista del proyecto">
+                    <div class="modal-image-nav">
+                        <button id="prev-img" class="nav-btn">&lsaquo;</button>
+                        <button id="next-img" class="nav-btn">&rsaquo;</button>
+                    </div>
+                </div>
+                <div class="modal-info-panel">
+                    <div class="info-header">
+                        <h2 id="modal-title">Título del Proyecto</h2>
+                        <span id="modal-category" class="category-badge">Residencial</span>
+                    </div>
+                    <div class="info-scrollbox">
+                        <p id="modal-desc" class="project-description">
+                            Descripción detallada del proyecto.
+                        </p>
+                        <ul class="specs-list">
+                            <li><span class="spec-label">Ubicación</span> <span id="modal-loc" class="spec-value">-</span></li>
+                            <li><span class="spec-label">Superficie</span> <span id="modal-area" class="spec-value">-</span></li>
+                            <li><span class="spec-label">Año</span> <span id="modal-year" class="spec-value">-</span></li>
+                            <li><span class="spec-label">Materiales</span> <span id="modal-mat" class="spec-value">-</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Claudio Arquitectura. Todos los derechos reservados.</p>
+    </footer>
+
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
