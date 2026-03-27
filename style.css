@@ -26,108 +26,92 @@ body {
     overflow-x: hidden;
 }
 
-/* Header & Profile Section */
+/* Header & Profile Section (Mobile-First) */
 .main-header {
     background: var(--bg-primary);
-    padding: 4rem 1rem 0;
+    padding: 2rem 1rem 0;
     max-width: 935px;
     margin: 0 auto;
 }
 
 .profile-container {
     display: flex;
-    margin-bottom: 3.5rem;
-    padding: 0 1rem;
+    flex-direction: column;
     align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    text-align: center;
 }
 
 .profile-photo-col {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
+    margin-bottom: 1.5rem;
 }
 
 .profile-photo {
-    width: 160px;
-    height: 160px;
+    width: 100px;
+    height: 100px;
     overflow: hidden;
     background: #fff;
-    box-shadow: var(--shadow-lg); /* Using the existing large shadow variable */
+    box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: default;
-}
-
-.profile-photo:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 .profile-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Using contain to ensure the logo isn't cropped if it's not perfectly square */
-}
-
-@media (max-width: 768px) {
-    .profile-photo {
-        width: 80px;
-        height: 80px;
-    }
-    .profile-container {
-        margin-bottom: 2rem;
-    }
+    object-fit: contain;
 }
 
 .profile-info-col {
-    flex: 2;
-    padding-left: 2rem;
+    padding-left: 0;
 }
 
 .profile-brand-row {
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
 }
 
 .brand-name {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 300;
     font-family: var(--font-heading);
     letter-spacing: -0.5px;
-    line-height: 1;
+    line-height: 1.2;
 }
 
 .brand-subtitle {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
 }
 
 .profile-bio {
-    max-width: 450px;
+    max-width: 100%;
 }
 
 .profile-bio .description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #444;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
     margin-bottom: 1.5rem;
 }
 
 .profile-actions {
     display: flex;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.8rem;
 }
 
 .action-link {
     text-decoration: none;
     background: var(--accent-color);
     color: white;
-    padding: 0.6rem 1.5rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -149,16 +133,16 @@ body {
     display: flex;
     justify-content: center;
     border-top: 1px solid #eee;
-    gap: 4rem;
+    gap: 2rem;
 }
 
 .tab-item {
     text-decoration: none;
     color: var(--text-muted);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 1.5px;
-    padding: 1.2rem 0;
+    letter-spacing: 1px;
+    padding: 1rem 0;
     border-top: 1px solid transparent;
     margin-top: -1px;
     transition: color 0.2s;
@@ -169,30 +153,114 @@ body {
     border-top: 1px solid var(--text-main);
 }
 
-/* Instagram Grid */
+/* Portfolio Grid (Mobile-First) */
 .portfolio-section {
     max-width: 935px;
     margin: 0 auto;
-    padding-top: 1rem;
+    padding-top: 0.5rem;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 4px; /* Tiny Instagram gap */
+    gap: 2px;
     background-color: var(--bg-primary);
 }
 
 @media (min-width: 768px) {
-    .grid-container {
-        gap: 28px; /* Slightly more air on desktop as per Instagram pattern */
+    .main-header {
+        padding: 4rem 1rem 0;
     }
-}
 
-/* Mobile-first: force 3 columns with minimal gap as requested */
-@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .profile-photo-col {
+        flex: 1;
+        margin-bottom: 0;
+        justify-content: flex-start;
+    }
+
+    .profile-photo {
+        width: 160px;
+        height: 160px;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .profile-photo:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .profile-info-col {
+        flex: 2;
+        padding-left: 2rem;
+    }
+
+    .brand-name {
+        font-size: 1.8rem;
+    }
+
+    .brand-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .profile-bio {
+        max-width: 450px;
+    }
+
+    .profile-actions {
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .action-link {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .profile-tabs {
+        gap: 4rem;
+    }
+
+    .tab-item {
+        font-size: 0.8rem;
+        padding: 1.2rem 0;
+    }
+
     .grid-container {
-        gap: 2px;
+        gap: 28px;
+    }
+
+    /* Modal Desktop Overrides */
+    .modal-content {
+        height: 85vh;
+        border-radius: 4px;
+    }
+
+    .modal-body {
+        display: flex; /* Back to flex for desktop side-by-side */
+        flex-direction: row;
+        overflow-y: hidden;
+    }
+
+    .modal-image-container {
+        flex: 2;
+        height: 100% !important;
+        position: relative;
+        top: auto;
+    }
+
+    .modal-info-panel {
+        flex: 1;
+        padding: 2.5rem;
+        overflow-y: auto;
+        border-top: none;
+        border-left: 1px solid #eee;
     }
 }
 
@@ -279,7 +347,7 @@ body {
     background: var(--bg-primary);
     width: 100%;
     max-width: 1000px;
-    height: 90vh;
+    height: 100%; /* Full height on mobile */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -288,7 +356,7 @@ body {
 }
 
 @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
+    from { transform: translateY(100%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
@@ -296,43 +364,56 @@ body {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: none;
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(5px);
     border: none;
-    font-size: 2rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.5rem;
     cursor: pointer;
     z-index: 1010;
     color: var(--text-main);
-    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-body {
-    display: flex;
-    flex-direction: column;
+    display: block; /* Change from flex to block to allow sticky child */
     height: 100%;
+    overflow-y: auto; /* Parent scrolls */
+    overflow-x: hidden;
+    position: relative;
 }
 
 .modal-image-container {
-    flex: 1;
+    height: var(--modal-img-height, 55vh);
     background: #000;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     overflow: hidden;
+    transition: height 0.05s linear;
+    flex-shrink: 0;
 }
 
 .modal-image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover for more impact on mobile */
     transition: opacity 0.2s ease-in-out;
 }
 
 .modal-info-panel {
     background: var(--bg-primary);
-    padding: 2rem;
-    overflow-y: auto;
-    border-top: 1px solid #eee;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 10;
+    /* Remove overflow so parent handles it */
 }
 
 .info-header {

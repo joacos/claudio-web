@@ -142,6 +142,29 @@ async function init() {
         }
     }
 
+    const modalBody = document.querySelector('.modal-body');
+    const imageContainer = document.querySelector('.modal-image-container');
+
+    let maxScroll = 0;
+
+    function handleModalScroll() {
+        if (window.innerWidth >= 768) return; // Only for mobile
+        
+        const scrollTop = modalBody.scrollTop;
+        // Keep track of the furthest scroll position to prevent re-expanding
+        maxScroll = Math.max(maxScroll, scrollTop);
+        
+        const baseHeight = 55; // vh
+        const minHeight = 25; // vh
+        const shrinkRate = 0.2; // Adjust for sensitivity
+        
+        // Use maxScroll instead of scrollTop to keep it shrunk
+        const newHeight = Math.max(minHeight, baseHeight - (maxScroll * shrinkRate));
+        imageContainer.style.setProperty('--modal-img-height', `${newHeight}vh`);
+    }
+
+    modalBody.addEventListener('scroll', handleModalScroll);
+
     function openModal(project) {
         currentProject = project;
         currentImageIndex = 0;
@@ -155,6 +178,11 @@ async function init() {
         document.getElementById('modal-mat').innerText = project.materiality;
 
         updateModalImage();
+        
+        // Reset scroll, maxScroll and height
+        modalBody.scrollTop = 0;
+        maxScroll = 0;
+        imageContainer.style.setProperty('--modal-img-height', '55vh');
 
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
