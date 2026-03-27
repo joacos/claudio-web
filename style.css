@@ -51,7 +51,16 @@ body {
     width: 160px;
     height: 160px;
     overflow: hidden;
-    background: var(--bg-secondary);
+    background: #fff;
+    box-shadow: var(--shadow-lg); /* Using the existing large shadow variable */
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.profile-photo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 .profile-photo img {
