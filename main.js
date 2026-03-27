@@ -13,7 +13,7 @@ async function init() {
 
     async function loadProjects() {
         try {
-            const response = await fetch('/content/projects.json');
+            const response = await fetch('content/projects.json');
             if (response.ok) {
                 const data = await response.json();
                 projects = data.projects || [];
