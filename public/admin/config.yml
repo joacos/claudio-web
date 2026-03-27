@@ -11,7 +11,7 @@ collections:
     files:
       - label: "Lista de Proyectos"
         name: "projects_list"
-        file: "content/projects.json"
+        file: "public/content/projects.json"
         fields:
           - name: projects
             label: Proyectos
