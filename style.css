@@ -50,7 +50,6 @@ body {
 .profile-photo {
     width: 160px;
     height: 160px;
-    border-radius: 50%;
     overflow: hidden;
     background: var(--bg-secondary);
 }
@@ -58,7 +57,7 @@ body {
 .profile-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Using contain to ensure the logo isn't cropped if it's not perfectly square */
 }
 
 @media (max-width: 768px) {
