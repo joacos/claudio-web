@@ -19,7 +19,7 @@ collections:
             fields:
               - { label: "Título", name: "title", widget: "string" }
               - { label: "Categoría", name: "category", widget: "select", options: ["Residencial", "Comercial", "Oficinas", "Público"] }
-              - { label: "Imagen Principal", name: "image", widget: "image" }
+              - { label: "Imágenes del Proyecto", name: "gallery", widget: "list", summary: "{{fields.image}}", field: { label: "Imagen", name: "image", widget: "image" } }
               - { label: "Descripción", name: "description", widget: "text" }
               - { label: "Ubicación", name: "location", widget: "string" }
               - { label: "Superficie", name: "area", widget: "string" }

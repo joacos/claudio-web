@@ -95,13 +95,21 @@ async function init() {
         renderGrid();
     }
 
+    let currentProject = null;
+    let currentImageIndex = 0;
+
     function renderGrid() {
         grid.innerHTML = '';
         projects.forEach(project => {
             const item = document.createElement('div');
             item.className = 'grid-item';
+            // Use the first image of the gallery as thumbnail
+            const thumbnail = project.gallery && project.gallery.length > 0 
+                ? project.gallery[0] 
+                : project.image; // fallback to legacy 'image' field if exists
+
             item.innerHTML = `
-                <img src="${project.image}" alt="${project.title}" loading="lazy">
+                <img src="${thumbnail}" alt="${project.title}" loading="lazy">
                 <div class="grid-item-overlay">
                     <div class="overlay-content">
                         <p class="overlay-title">${project.title}</p>
@@ -113,8 +121,31 @@ async function init() {
         });
     }
 
+    function updateModalImage() {
+        if (!currentProject) return;
+        const images = currentProject.gallery || [currentProject.image];
+        const modalImg = document.getElementById('modal-img');
+        
+        // Add a simple fade transition effect
+        modalImg.style.opacity = 0;
+        setTimeout(() => {
+            modalImg.src = images[currentImageIndex];
+            modalImg.style.opacity = 1;
+        }, 150);
+
+        // Hide/show nav buttons if only one image
+        const nav = document.querySelector('.modal-image-nav');
+        if (images.length <= 1) {
+            nav.style.display = 'none';
+        } else {
+            nav.style.display = 'flex';
+        }
+    }
+
     function openModal(project) {
-        document.getElementById('modal-img').src = project.image;
+        currentProject = project;
+        currentImageIndex = 0;
+        
         document.getElementById('modal-title').innerText = project.title;
         document.getElementById('modal-category').innerText = project.category;
         document.getElementById('modal-desc').innerText = project.description;
@@ -123,13 +154,47 @@ async function init() {
         document.getElementById('modal-year').innerText = project.year;
         document.getElementById('modal-mat').innerText = project.materiality;
 
+        updateModalImage();
+
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
+        document.body.style.overflow = 'hidden';
     }
+
+    function nextImage() {
+        if (!currentProject) return;
+        const images = currentProject.gallery || [currentProject.image];
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateModalImage();
+    }
+
+    function prevImage() {
+        if (!currentProject) return;
+        const images = currentProject.gallery || [currentProject.image];
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateModalImage();
+    }
+
+    document.getElementById('next-img').addEventListener('click', (e) => {
+        e.stopPropagation();
+        nextImage();
+    });
+    document.getElementById('prev-img').addEventListener('click', (e) => {
+        e.stopPropagation();
+        prevImage();
+    });
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'ArrowRight') nextImage();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'Escape') closeModalHandler();
+    });
 
     function closeModalHandler() {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
+        currentProject = null;
     }
 
     closeModal.addEventListener('click', closeModalHandler);
