@@ -102,30 +102,140 @@ body {
 .profile-actions {
     display: flex;
     justify-content: center;
-    gap: 0.8rem;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin-top: 1.5rem;
 }
 
-.action-link {
+.action-btn {
+    flex: 1; /* Uniform width */
     text-decoration: none;
+    background: #f0f0f0;
+    color: var(--text-main);
+    padding: 0.8rem 0.2rem; /* Taller but less horizontal padding */
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn.outline {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid #ddd;
+}
+
+.action-btn:hover {
+    background: #e8e8e8;
+}
+
+.action-btn.active {
     background: var(--accent-color);
     color: white;
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Tab Content Visibility & Transitions */
+.tab-content {
+    display: none;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.content-wrapper {
+    overflow-x: hidden;
+    min-height: 35vh;
+}
+
+/* Trayectoria View (Mobile-First) */
+.trajectory-container {
+    max-width: 650px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.trajectory-header h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem; /* Reduced from 2rem */
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.years-experience {
+    color: var(--text-muted);
+    font-size: 0.75rem; /* Reduced from 0.9rem */
     text-transform: uppercase;
-    transition: opacity 0.2s;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem; /* Reduced from 2.5rem */
 }
 
-.action-link.outline {
-    background: transparent;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
+.trajectory-text p {
+    font-size: 0.95rem; /* Reduced from 1.1rem */
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    text-align: left;
 }
 
-.action-link:hover {
-    opacity: 0.8;
+/* Contact View (Mobile-First) */
+.contact-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.contact-card {
+    background: var(--bg-secondary);
+    padding: 2rem; /* Reduced from 3rem */
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem; /* Reduced from 1.8rem */
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-links {
+    list-style: none;
+    text-align: left;
+    margin: 1.5rem auto;
+    max-width: 100%;
+}
+
+.contact-links li {
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem; /* Reduced from 0.95rem */
+}
+
+.contact-links strong {
+    display: inline-block;
+    width: 80px;
+    font-weight: 600;
 }
 
 /* Profile Tabs */
@@ -169,14 +279,14 @@ body {
 
 @media (min-width: 768px) {
     .main-header {
-        padding: 4rem 1rem 0;
+        padding: 2rem 1rem 0; /* Reduced top/bottom padding */
     }
 
     .profile-container {
         flex-direction: row;
         text-align: left;
         align-items: center;
-        margin-bottom: 3.5rem;
+        margin-bottom: 2rem; /* Reduced from 3.5rem */
     }
 
     .profile-photo-col {
@@ -215,44 +325,44 @@ body {
 
     .profile-actions {
         justify-content: flex-start;
+        width: auto;
+        padding: 0;
         gap: 1rem;
+        margin-top: 1.5rem; /* Reduced from 2rem */
     }
 
-    .action-link {
-        padding: 0.6rem 1.5rem;
+    .action-btn {
+        flex: initial;
+        padding: 0.6rem 2rem;
         font-size: 0.8rem;
-    }
-
-    .profile-tabs {
-        gap: 4rem;
-    }
-
-    .tab-item {
-        font-size: 0.8rem;
-        padding: 1.2rem 0;
     }
 
     .grid-container {
-        gap: 28px;
+        gap: 24px;
+        padding-top: 1rem;
     }
 
-    /* Modal Desktop Overrides */
+    /* Modal Desktop Overrides - Consolidated & Fixed */
     .modal-content {
         height: 85vh;
         border-radius: 4px;
     }
 
     .modal-body {
-        display: flex; /* Back to flex for desktop side-by-side */
-        flex-direction: row;
+        display: flex !important; /* Force flex for side-by-side */
+        flex-direction: row !important;
         overflow-y: hidden;
     }
 
     .modal-image-container {
-        flex: 2;
+        flex: 1.5; /* Balanced ratio */
         height: 100% !important;
         position: relative;
         top: auto;
+    }
+
+    .modal-image-container img {
+        object-fit: contain;
     }
 
     .modal-info-panel {
@@ -261,6 +371,38 @@ body {
         overflow-y: auto;
         border-top: none;
         border-left: 1px solid #eee;
+    }
+
+    .modal-image-nav {
+        padding: 0 2rem;
+    }
+
+    /* Content Containers - Balanced Desktop Spacing */
+    .trajectory-container,
+    .contact-container {
+        margin: 1rem auto;
+    }
+
+    .trajectory-header h2 {
+        font-size: 2rem;
+    }
+
+    .years-experience {
+        font-size: 0.9rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .trajectory-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .contact-card {
+        padding: 3rem;
+    }
+
+    .contact-card h2 {
+        font-size: 1.8rem;
     }
 }
 
@@ -467,62 +609,121 @@ body {
     font-weight: 400;
 }
 
-/* Navigation Buttons for Modal (Bonus) */
-.nav-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 3rem;
-    cursor: pointer;
+/* Navigation Buttons for Modal */
+.modal-image-nav {
     position: absolute;
     top: 50%;
+    left: 0;
+    width: 100%;
     transform: translateY(-50%);
-    padding: 1rem;
-    opacity: 0.5;
-    transition: opacity var(--transition-speed);
+    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 1010; /* Match close button or slightly lower */
+}
+
+.nav-btn {
+    background: rgba(0, 0, 0, 0.3); /* Darker background for better contrast on architectural photos */
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .nav-btn:hover {
-    opacity: 1;
+    background: rgba(0, 0, 0, 0.6);
+    transform: scale(1.1);
 }
 
-#prev-img { left: 0; }
-#next-img { right: 0; }
+.nav-btn:active {
+    transform: scale(0.9);
+}
 
-/* Desktop Media Query */
 @media (min-width: 768px) {
-    .main-header {
-        padding: 3rem 2rem;
-    }
-
-    .grid-container {
-        gap: 1.5rem;
-        padding: 1.5rem;
-    }
-
-    .modal-body {
-        flex-direction: row;
-    }
-
-    .modal-image-container {
-        flex: 2;
-    }
-
-    .modal-info-panel {
-        flex: 1;
-        border-top: none;
-        border-left: 1px solid #eee;
+    .nav-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
     }
 }
+
 
 .main-footer {
-    padding: 4rem 2rem;
+    padding: 1.2rem 2rem;
     text-align: center;
     background: var(--bg-secondary);
-    margin-top: 4rem;
+    margin-top: 0.5rem;
 }
 
 .main-footer p {
     font-size: 0.8rem;
     color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.branding-footer a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.branding-footer a:hover {
+    color: var(--accent-color);
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #0d9f48; /* Slightly darker WhatsApp green */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-float svg {
+        width: 26px;
+        height: 26px;
+    }
 }

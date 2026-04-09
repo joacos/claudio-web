@@ -230,6 +230,32 @@ async function init() {
         if (e.target === modal) closeModalHandler();
     });
 
+    // Tab Switching Logic
+    const actionButtons = document.querySelectorAll('.action-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    actionButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+
+            // Update button active state
+            actionButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Switch content with a small delay for the animation
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            setTimeout(() => {
+                const targetElement = document.getElementById(targetTab);
+                if (targetElement) {
+                    targetElement.classList.add('active');
+                }
+            }, 50);
+        });
+    });
+
     // Initial load
     loadProjects();
 }
