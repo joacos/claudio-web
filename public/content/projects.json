@@ -1,38 +1,32 @@
 {
   "projects": [
     {
-      "materiality": "Madera Termotratada, Hormigón Visto",
-      "area": "180 m²",
-      "location": "Valdivia, Chile",
-      "title": "Casa Sur Valdivia",
-      "id": 1,
-      "image": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80",
-      "description": "Diseño optimizado para luz natural y eficiencia térmica en el clima lluvioso del sur de Chile. El uso de materiales locales permite una integración orgánica con el paisaje.",
-      "year": "2025",
-      "category": "Residencial"
-    },
-    {
-      "materiality": "Acero, Cristal Templado",
-      "area": "90 m²",
-      "location": "Frutillar, Chile",
-      "title": "Pabellón Minimalista",
-      "id": 2,
-      "image": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80",
-      "description": "Estructura abierta que dialoga con el entorno boscoso.",
-      "year": "2024",
-      "category": "Comercial"
-    },
-    {
-      "title": "Test",
+      "title": "VIVIENDA UNIFAMILIAR SECTOR CUTIPAY, XIV REGION LOS RIOS, VALDIVIA",
       "category": "Residencial",
       "gallery": [
-        "/images/uploads/whatsapp-image-2026-04-03-at-10.13.58.jpeg"
+        "/images/uploads/8e3bee98-2ba5-4985-87a6-ccbd79678fdc-3.jpg"
       ],
-      "description": "Cabaña construida en base a pilotes y madera nativa.",
-      "location": "Caleta el Piojo",
-      "area": "100 m2",
-      "year": "2015",
-      "materiality": "Varios"
+      "description": "Proyecto de vivienda unifamiliar permanente de 400 m², diseñado bajo principios de la arquitectura nórdica, que privilegia la simplicidad, la eficiencia y el confort.\nLa propuesta se organiza en torno a espacios amplios e integrados, destacando un área central de estar–comedor–cocina, junto a 4 dormitorios, 3 baños, sala de estar y un escritorio tipo solárium, concebido como un espacio de transición luminoso y vinculado al entorno.\nEl diseño enfatiza la entrada de luz natural en todos los recintos mediante grandes superficies vidriadas, generando ambientes cálidos y acogedores durante todo el año.\nSu volumetría compacta y el uso de materiales nobles, como la madera, responden a las condiciones climáticas del sur de Chile, asegurando eficiencia térmica y durabilidad.\nEl proyecto se completa con estacionamiento techado para vehículos y embarcaciones, integrándose de manera armónica con el paisaje.\n",
+      "location": "Sector Avellanos de trapen, Puerto Montt, Region De Los Lagos",
+      "area": "400 m2",
+      "year": "2014",
+      "materiality": "Estructura de Hormigon - Acero, aluminio, revestimiento Norway y madera interior"
+    },
+    {
+      "title": "VIVIENDA UNIFAMILIAR SECTOR CUTIPAY, XIV REGION LOS RIOS, VALDIVIA",
+      "category": "Residencial",
+      "gallery": [
+        "/images/uploads/8e3bee98-2ba5-4985-87a6-ccbd79678fdc-3.jpg",
+        "/images/uploads/11d43e29-278c-4c49-8cba-93b102bd82ef-3.jpg",
+        "/images/uploads/11d43e29-278c-4c49-8cba-93b102bd82ef-3.jpg",
+        "/images/uploads/ea5827e3-43a3-4cd2-9734-731a85357c99-3.jpg",
+        "/images/uploads/img_7013.heic"
+      ],
+      "description": "Proyecto de segunda vivienda de 160 m², emplazada en el sector de Cutipay, diseñada para aprovechar al máximo su privilegiada relación con el río Valdivia.\nLa vivienda contempla 3 dormitorios, 2 baños, un amplio espacio integrado de estar–comedor–cocina, sala de música y estacionamiento techado, configurando un programa completo para el descanso y la vida familiar.\nEl diseño prioriza una gran espacialidad interior y alta luminosidad, incorporando amplias aperturas que permiten vistas hacia el río desde todos los espacios, generando una experiencia continua con el entorno natural y un ambiente interior cálido, confortable y abierto al paisaje.\n",
+      "location": "Sector Cutipay, Costa Valdivia, Region De Los Rios",
+      "area": "160 m2",
+      "year": "2020",
+      "materiality": "Estructura Mixta de Fierro y madera, revestimiento exterior Norway, revestimiento interior madera y Volcanita"
     }
   ]
 }
