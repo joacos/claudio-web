@@ -7,7 +7,7 @@ export default defineConfig({
   title: 'claudio-web',
   projectId: 'vsc3ma0t',
   dataset: 'production',
-  basePath: '/admin',
+  basePath: '/studio',
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
