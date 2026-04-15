@@ -13,5 +13,9 @@
   "license": "ISC",
   "devDependencies": {
     "vite": "^8.0.3"
+  },
+  "dependencies": {
+    "@sanity/client": "^6.15.8",
+    "@sanity/image-url": "^1.0.2"
   }
 }

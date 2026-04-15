@@ -2,6 +2,20 @@
  * Main JS for Claudio Arq. Portfolio
  * Handles fetching projects and grid interactions
  */
+import { createClient } from '@sanity/client';
+import imageUrlBuilder from '@sanity/image-url';
+
+const client = createClient({
+    projectId: 'vsc3ma0t',
+    dataset: 'production',
+    useCdn: true,
+    apiVersion: '2024-04-15',
+});
+
+const builder = imageUrlBuilder(client);
+function urlFor(source) {
+    return builder.image(source);
+}
 
 async function init() {
     const grid = document.getElementById('portfolio-grid');
@@ -13,13 +27,36 @@ async function init() {
 
     async function loadProjects() {
         try {
-            const response = await fetch('content/projects.json');
-            if (response.ok) {
-                const data = await response.json();
-                projects = data.projects || [];
+            const query = `*[_type == "project"] | order(_createdAt desc){
+                _id,
+                title,
+                category,
+                description,
+                location,
+                area,
+                year,
+                materiality,
+                image,
+                gallery
+            }`;
+            const fetchedData = await client.fetch(query);
+            
+            if (fetchedData && fetchedData.length > 0) {
+                projects = fetchedData.map(project => ({
+                    id: project._id,
+                    title: project.title,
+                    category: project.category,
+                    description: project.description,
+                    location: project.location,
+                    area: project.area,
+                    year: project.year,
+                    materiality: project.materiality,
+                    image: project.image ? urlFor(project.image).url() : null,
+                    gallery: project.gallery ? project.gallery.map(img => urlFor(img).url()) : []
+                }));
             } else {
-                console.warn('Projects JSON not found, using fallback data.');
-                // Fallback for development/initial state
+                console.warn('No projects found in Sanity, using fallback data.');
+                // Fallback for development/initial state if Sanity has no projects yet
                 projects = [
                     {
                         id: 1,
@@ -53,39 +90,6 @@ async function init() {
                         area: "450 m²",
                         year: "2023",
                         materiality: "Hormigón, Aluminio"
-                    },
-                    {
-                        id: 4,
-                        image: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&w=1200&q=80",
-                        title: "Residencia Bosque",
-                        category: "Residencial",
-                        description: "Vivienda unifamiliar situada en la precordillera, diseñada para maximizar las vistas al valle.",
-                        location: "Lo Barnechea, Chile",
-                        area: "320 m²",
-                        year: "2022",
-                        materiality: "Piedra Local, Vidrio"
-                    },
-                    {
-                        id: 5,
-                        image: "https://images.unsplash.com/photo-1448630360428-65ff2c0257e1?auto=format&fit=crop&w=1200&q=80",
-                        title: "Centro Cultural",
-                        category: "Público",
-                        description: "Espacio polivalente para la comunidad, con énfasis en la acústica y el flujo de personas.",
-                        location: "Concepción, Chile",
-                        area: "1200 m²",
-                        year: "2021",
-                        materiality: "Hormigón, Cobre"
-                    },
-                    {
-                        id: 6,
-                        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-                        title: "Torre Mirador",
-                        category: "Oficinas",
-                        description: "Edificio de gran altura con certificación LEED, integrando jardines verticales en su estructura.",
-                        location: "Santiago, Chile",
-                        area: "5400 m²",
-                        year: "2020",
-                        materiality: "Acero, Vidrio Low-E"
                     }
                 ];
             }
