@@ -5,8 +5,8 @@
     --text-muted: #6c757d;
     --accent-color: #000000;
     --grid-gap: 4px;
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Century Gothic', sans-serif;
+    --font-body: 'Century Gothic', sans-serif;
     --transition-speed: 0.3s;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
@@ -48,8 +48,8 @@ body {
 }
 
 .profile-photo {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     overflow: hidden;
     background: #fff;
     box-shadow: var(--shadow-sm);
@@ -296,8 +296,8 @@ body {
     }
 
     .profile-photo {
-        width: 160px;
-        height: 160px;
+        width: 220px;
+        height: 220px;
         box-shadow: var(--shadow-lg);
     }
 

@@ -37,6 +37,7 @@ async function init() {
                 year,
                 materiality,
                 image,
+                mainImage,
                 gallery
             }`;
             const fetchedData = await client.fetch(query);
@@ -52,6 +53,7 @@ async function init() {
                     year: project.year,
                     materiality: project.materiality,
                     image: project.image ? urlFor(project.image).url() : null,
+                    mainImage: project.mainImage ? urlFor(project.mainImage).url() : null,
                     gallery: project.gallery ? project.gallery.map(img => urlFor(img).url()) : []
                 }));
             } else {
@@ -107,10 +109,8 @@ async function init() {
         projects.forEach(project => {
             const item = document.createElement('div');
             item.className = 'grid-item';
-            // Use the first image of the gallery as thumbnail
-            const thumbnail = project.gallery && project.gallery.length > 0 
-                ? project.gallery[0] 
-                : project.image; // fallback to legacy 'image' field if exists
+            // Use the main image as thumbnail (fallback to 'image' field or first gallery image)
+            const thumbnail = project.mainImage || project.image || (project.gallery && project.gallery.length > 0 ? project.gallery[0] : null);
 
             item.innerHTML = `
                 <img src="${thumbnail}" alt="${project.title}" loading="lazy">
