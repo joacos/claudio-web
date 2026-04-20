@@ -14,7 +14,7 @@ const client = createClient({
 
 const builder = imageUrlBuilder(client);
 function urlFor(source) {
-    return builder.image(source);
+    return builder.image(source).auto('format').fit('max').width(1600).quality(80);
 }
 
 async function init() {
@@ -54,7 +54,11 @@ async function init() {
                     materiality: project.materiality,
                     image: project.image ? urlFor(project.image).url() : null,
                     mainImage: project.mainImage ? urlFor(project.mainImage).url() : null,
-                    gallery: project.gallery ? project.gallery.map(img => urlFor(img).url()) : []
+                    gallery: project.gallery ? project.gallery.map(img => urlFor(img).url()) : [],
+                    thumbImage: (() => {
+                        const src = project.mainImage || project.image || (project.gallery && project.gallery.length > 0 ? project.gallery[0] : null);
+                        return src ? urlFor(src).width(600).url() : null;
+                    })()
                 }));
             } else {
                 console.warn('No projects found in Sanity, using fallback data.');
@@ -110,7 +114,7 @@ async function init() {
             const item = document.createElement('div');
             item.className = 'grid-item';
             // Use the main image as thumbnail (fallback to 'image' field or first gallery image)
-            const thumbnail = project.mainImage || project.image || (project.gallery && project.gallery.length > 0 ? project.gallery[0] : null);
+            const thumbnail = project.thumbImage || project.mainImage || project.image || (project.gallery && project.gallery.length > 0 ? project.gallery[0] : null);
 
             item.innerHTML = `
                 <img src="${thumbnail}" alt="${project.title}" loading="lazy">
