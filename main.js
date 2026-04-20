@@ -27,7 +27,7 @@ async function init() {
 
     async function loadProjects() {
         try {
-            const query = `*[_type == "project"] | order(order asc, _createdAt desc){
+            const query = `*[_type == "project"] | order(orderRank asc){
                 _id,
                 title,
                 category,
