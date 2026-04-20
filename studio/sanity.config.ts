@@ -15,10 +15,17 @@ export default defineConfig({
         S.list()
           .title('Content')
           .items([
-            orderableDocumentListDeskItem({type: 'project', S, context, title: 'Reorder Projects'}),
+            orderableDocumentListDeskItem({
+              type: 'project',
+              S,
+              context,
+              title: 'Reorder Projects',
+              id: 'reorder-projects'
+            }),
             S.divider(),
+            // Filter out the 'project' document type from the default list
             ...S.documentTypeListItems().filter(
-              (item) => item.getId() !== 'project'
+              (item) => item.getSchemaType()?.name !== 'project' && item.getId() !== 'project'
             ),
           ]),
     }),
