@@ -5,7 +5,7 @@ import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'claudio-web',
+  title: 'Claudio Gallardo Arq (MODS ACTIVE)',
   projectId: 'vsc3ma0t',
   dataset: 'production',
   basePath: '/studio',
@@ -19,13 +19,11 @@ export default defineConfig({
               type: 'project',
               S,
               context,
-              title: 'Reorder Projects',
-              id: 'reorder-projects'
+              title: 'Reorder Projects'
             }),
             S.divider(),
-            // Filter out the 'project' document type from the default list
             ...S.documentTypeListItems().filter(
-              (item) => item.getSchemaType()?.name !== 'project' && item.getId() !== 'project'
+              (item) => item.getId() !== 'project'
             ),
           ]),
     }),
