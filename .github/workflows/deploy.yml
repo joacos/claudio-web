@@ -17,11 +17,19 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Dependencies
+      - name: Install Frontend Dependencies
         run: npm install
 
-      - name: Build Project
+      - name: Build Frontend
         run: npm run build
+
+      - name: Install Studio Dependencies
+        run: npm install
+        working-directory: ./studio
+
+      - name: Build Sanity Studio
+        run: npm run build -- ../dist/studio
+        working-directory: ./studio
 
       - name: Deploy to cPanel (FTP)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
