@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('/fonts/ExpletusSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Expletus Sans';
+    src: url('/fonts/ExpletusSans-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
 :root {
     --bg-primary: #ffffff;
     --bg-secondary: #f8f9fa;
@@ -5,8 +21,8 @@
     --text-muted: #6c757d;
     --accent-color: #000000;
     --grid-gap: 4px;
-    --font-heading: 'Century Gothic', sans-serif;
-    --font-body: 'Century Gothic', sans-serif;
+    --font-heading: 'Expletus Sans', sans-serif;
+    --font-body: 'Expletus Sans', sans-serif;
     --transition-speed: 0.3s;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
@@ -30,7 +46,7 @@ body {
 .main-header {
     background: var(--bg-primary);
     padding: 2rem 1rem 0;
-    max-width: 935px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -165,7 +181,7 @@ body {
 
 /* Trayectoria View (Mobile-First) */
 .trajectory-container {
-    max-width: 650px;
+    max-width: 1000px;
     margin: 2rem auto;
     padding: 0 1.5rem;
     text-align: center;
@@ -196,7 +212,7 @@ body {
 
 /* Contact View (Mobile-First) */
 .contact-container {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
@@ -265,7 +281,7 @@ body {
 
 /* Portfolio Grid (Mobile-First) */
 .portfolio-section {
-    max-width: 935px;
+    max-width: 1000px;
     margin: 0 auto;
     padding-top: 0.5rem;
 }
@@ -286,7 +302,8 @@ body {
         flex-direction: row;
         text-align: left;
         align-items: center;
-        margin-bottom: 2rem; /* Reduced from 3.5rem */
+        margin-bottom: 2rem;
+        padding: 0; /* Align perfectly with 1000px boundary */
     }
 
     .profile-photo-col {
@@ -308,7 +325,7 @@ body {
 
     .profile-info-col {
         flex: 2;
-        padding-left: 2rem;
+        padding-left: 3rem; /* Increase gap between photo and info */
     }
 
     .brand-name {
@@ -327,8 +344,8 @@ body {
         justify-content: flex-start;
         width: auto;
         padding: 0;
-        gap: 1rem;
-        margin-top: 1.5rem; /* Reduced from 2rem */
+        gap: 1.2rem;
+        margin-top: 1.5rem;
     }
 
     .action-btn {

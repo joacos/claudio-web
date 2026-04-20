@@ -6,6 +6,13 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      description: 'Used for manual reordering. Lower numbers appear first.',
+      initialValue: 100,
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
