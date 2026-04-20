@@ -404,6 +404,124 @@ body {
     .contact-card h2 {
         font-size: 1.8rem;
     }
+
+    /* Services Desktop Styles */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .service-card {
+        padding: 3rem;
+    }
+}
+
+/* Services View Styling */
+.services-container {
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.services-header h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.5px;
+}
+
+.services-subtitle {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.service-card {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 2px;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #f0f0f0;
+    border-left: 4px solid var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: #e0e0e0;
+    border-left-width: 8px;
+}
+
+.service-number {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    position: absolute;
+    top: -1rem;
+    right: -0.5rem;
+    opacity: 0.03;
+    pointer-events: none;
+    line-height: 1;
+}
+
+.service-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    position: relative;
+    z-index: 2;
+}
+
+.service-card p, 
+.service-list {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.7;
+    position: relative;
+    z-index: 2;
+}
+
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.service-list li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+.service-card strong {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 .grid-item {
