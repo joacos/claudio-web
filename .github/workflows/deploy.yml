@@ -28,19 +28,27 @@ jobs:
         working-directory: ./studio
 
       - name: Build Sanity Studio
-        run: npx sanity build ../dist/studio --yes
+        run: npx sanity build ./dist --yes
         working-directory: ./studio
 
-      - name: Verify Studio Build
+      - name: Fix Studio Asset Paths
         run: |
-          echo "=== Studio index.html contents ==="
-          cat dist/studio/index.html
-          echo ""
-          echo "=== Checking asset paths ==="
-          grep -o 'src="[^"]*"' dist/studio/index.html || true
-          grep -o 'href="[^"]*"' dist/studio/index.html || true
+          echo "=== Before fix ==="
+          head -5 studio/dist/index.html
+          # Replace /static/ with /studio/static/ in index.html
+          sed -i 's|"/static/|"/studio/static/|g' studio/dist/index.html
+          sed -i 's|/static/favicon|/studio/static/favicon|g' studio/dist/index.html
+          echo "=== After fix ==="
+          head -5 studio/dist/index.html
+
+      - name: Move Studio Build to Dist
+        run: |
+          mkdir -p dist/studio
+          cp -r studio/dist/* dist/studio/
+          echo "=== Final studio/index.html ==="
+          cat dist/studio/index.html | head -3
           echo "=== Studio files ==="
-          find dist/studio -type f | head -30
+          find dist/studio -type f | head -20
 
       - name: Deploy to cPanel (FTP)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
