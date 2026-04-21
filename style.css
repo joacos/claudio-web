@@ -359,40 +359,6 @@ body {
         padding-top: 1rem;
     }
 
-    /* Modal Desktop Overrides - Consolidated & Fixed */
-    .modal-content {
-        height: 85vh;
-        border-radius: 4px;
-    }
-
-    .modal-body {
-        display: flex !important; /* Force flex for side-by-side */
-        flex-direction: row !important;
-        overflow-y: hidden;
-    }
-
-    .modal-image-container {
-        flex: 1.5; /* Balanced ratio */
-        height: 100% !important;
-        position: relative;
-        top: auto;
-    }
-
-    .modal-image-container img {
-        object-fit: contain;
-    }
-
-    .modal-info-panel {
-        flex: 1;
-        padding: 2.5rem;
-        overflow-y: auto;
-        border-top: none;
-        border-left: 1px solid #eee;
-    }
-
-    .modal-image-nav {
-        padding: 0 2rem;
-    }
 
     /* Content Containers - Balanced Desktop Spacing */
     .trajectory-container,
@@ -890,5 +856,45 @@ body {
     .whatsapp-float svg {
         width: 26px;
         height: 26px;
+    }
+}
+
+/* Modal Desktop Overrides - Placed at end to ensure correct specificity */
+@media (min-width: 768px) {
+    .modal-content {
+        height: 85vh;
+        border-radius: 4px;
+    }
+
+    .modal-body {
+        display: flex !important; 
+        flex-direction: row !important;
+        overflow-y: hidden;
+    }
+
+    .modal-image-container {
+        flex: 1.6; /* Slightly wider for the image */
+        height: 100% !important;
+        background-color: #000; /* Dark background for 'contained' images */
+        position: relative;
+        top: auto;
+    }
+
+    .modal-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain !important; /* Force full visibility of architectural photos */
+    }
+
+    .modal-info-panel {
+        flex: 1;
+        padding: 3rem;
+        overflow-y: auto;
+        border-top: none;
+        border-left: 1px solid #eee;
+    }
+
+    .modal-image-nav {
+        padding: 0 2rem;
     }
 }
