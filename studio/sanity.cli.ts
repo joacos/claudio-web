@@ -5,7 +5,7 @@ export default defineCliConfig({
     projectId: 'vsc3ma0t',
     dataset: 'production'
   },
-  vite: (config) => {
+  vite: (config: any) => {
     return {
       ...config,
       base: '/studio/'

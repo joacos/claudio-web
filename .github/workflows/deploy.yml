@@ -18,17 +18,17 @@ jobs:
           node-version: '20'
 
       - name: Install Frontend Dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build Frontend
         run: npm run build
 
       - name: Install Studio Dependencies
-        run: npm install
+        run: npm ci
         working-directory: ./studio
 
       - name: Build Sanity Studio
-        run: npm run build -- ../dist/studio
+        run: npx sanity build ../dist/studio --clean-output --yes
         working-directory: ./studio
 
       - name: Deploy to cPanel (FTP)
