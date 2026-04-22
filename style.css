@@ -1,18 +1,4 @@
-@font-face {
-    font-family: 'Expletus Sans';
-    src: url('/fonts/ExpletusSans-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Expletus Sans';
-    src: url('/fonts/ExpletusSans-Italic-VariableFont_wght.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: italic;
-    font-display: swap;
-}
+/* Removed Expletus Sans local font face */
 
 :root {
     --bg-primary: #ffffff;
@@ -21,11 +7,47 @@
     --text-muted: #6c757d;
     --accent-color: #000000;
     --grid-gap: 4px;
-    --font-heading: 'Expletus Sans', sans-serif;
-    --font-body: 'Expletus Sans', sans-serif;
+
+    /* Typography Scale - Mobile Default */
+    --fs-xs: 0.7rem;
+    --fs-sm: 0.85rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.25rem;
+    --fs-xl: 1.5rem;
+    --fs-2xl: 2rem;
+    --fs-brand: 1.6rem;
+
+    --font-heading: 'League Spartan', sans-serif;
+    --font-body: 'League Spartan', sans-serif;
     --transition-speed: 0.3s;
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
     --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Tablet Scale (768px+) */
+@media (min-width: 768px) {
+    :root {
+        --fs-xs: 0.75rem;
+        --fs-sm: 0.9rem;
+        --fs-base: 1.05rem;
+        --fs-lg: 1.4rem;
+        --fs-xl: 1.8rem;
+        --fs-2xl: 2.5rem;
+        --fs-brand: 2rem;
+    }
+}
+
+/* Desktop Scale (1024px+) */
+@media (min-width: 1024px) {
+    :root {
+        --fs-xs: 0.8rem;
+        --fs-sm: 0.95rem;
+        --fs-base: 1.1rem;
+        --fs-lg: 1.6rem;
+        --fs-xl: 2.2rem;
+        --fs-2xl: 3rem;
+        --fs-brand: 2.4rem;
+    }
 }
 
 * {
@@ -88,7 +110,7 @@ body {
 }
 
 .brand-name {
-    font-size: 1.5rem;
+    font-size: var(--fs-brand);
     font-weight: 300;
     font-family: var(--font-heading);
     letter-spacing: -0.5px;
@@ -96,7 +118,7 @@ body {
 }
 
 .brand-subtitle {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -109,7 +131,7 @@ body {
 }
 
 .profile-bio .description {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     line-height: 1.5;
     color: #555;
     margin-bottom: 1.5rem;
@@ -132,7 +154,7 @@ body {
     padding: 0.8rem 0.2rem; /* Taller but less horizontal padding */
     border: 1px solid transparent;
     border-radius: 4px;
-    font-size: 0.65rem;
+    font-size: var(--fs-xs);
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -189,21 +211,21 @@ body {
 
 .trajectory-header h2 {
     font-family: var(--font-heading);
-    font-size: 1.5rem; /* Reduced from 2rem */
+    font-size: var(--fs-xl);
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
 
 .years-experience {
     color: var(--text-muted);
-    font-size: 0.75rem; /* Reduced from 0.9rem */
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 1.5rem; /* Reduced from 2.5rem */
 }
 
 .trajectory-text p {
-    font-size: 0.95rem; /* Reduced from 1.1rem */
+    font-size: var(--fs-sm);
     color: #444;
     line-height: 1.6;
     margin-bottom: 1.2rem;
@@ -328,57 +350,12 @@ body {
         padding-left: 3rem; /* Increase gap between photo and info */
     }
 
-    .brand-name {
-        font-size: 1.8rem;
+    .profile-photo:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     }
 
-    .brand-subtitle {
-        font-size: 0.9rem;
-    }
-
-    .profile-bio {
-        max-width: 450px;
-    }
-
-    .profile-actions {
-        justify-content: flex-start;
-        width: auto;
-        padding: 0;
-        gap: 1.2rem;
-        margin-top: 1.5rem;
-    }
-
-    .action-btn {
-        flex: initial;
-        padding: 0.6rem 2rem;
-        font-size: 0.8rem;
-    }
-
-    .grid-container {
-        gap: 24px;
-        padding-top: 1rem;
-    }
-
-
-    /* Content Containers - Balanced Desktop Spacing */
-    .trajectory-container,
-    .contact-container {
-        margin: 1rem auto;
-    }
-
-    .trajectory-header h2 {
-        font-size: 2rem;
-    }
-
-    .years-experience {
-        font-size: 0.9rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .trajectory-text p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-    }
+    .profile-info-col {
 
     .contact-card {
         padding: 3rem;
@@ -413,14 +390,14 @@ body {
 
 .services-header h2 {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
+    font-size: var(--fs-2xl);
     margin-bottom: 0.8rem;
     letter-spacing: -0.5px;
 }
 
 .services-subtitle {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 300;
@@ -466,7 +443,7 @@ body {
 
 .service-card h3 {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
+    font-size: var(--fs-lg);
     margin-bottom: 1.5rem;
     font-weight: 400;
     line-height: 1.2;
@@ -476,7 +453,7 @@ body {
 
 .service-card p, 
 .service-list {
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     color: #444;
     line-height: 1.7;
     position: relative;
@@ -556,7 +533,7 @@ body {
 }
 
 .overlay-title {
-    font-size: 0.9rem;
+    font-size: var(--fs-sm);
     font-weight: 500;
     letter-spacing: 0.5px;
 }
@@ -583,7 +560,7 @@ body {
 }
 
 .loader p {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 300;
@@ -695,7 +672,7 @@ body {
 
 .info-header h2 {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: var(--fs-xl);
     margin-bottom: 0.5rem;
 }
 
@@ -703,14 +680,14 @@ body {
     background: var(--bg-secondary);
     color: var(--text-muted);
     padding: 0.2rem 0.6rem;
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 2px;
 }
 
 .project-description {
-    font-size: 0.95rem;
+    font-size: var(--fs-sm);
     color: #444;
     margin-bottom: 2rem;
 }
@@ -725,13 +702,13 @@ body {
     border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
 }
 
 .spec-label {
     color: var(--text-muted);
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: var(--fs-xs);
     letter-spacing: 0.5px;
     font-weight: 500;
 }
@@ -799,7 +776,7 @@ body {
 }
 
 .main-footer p {
-    font-size: 0.8rem;
+    font-size: var(--fs-xs);
     color: var(--text-muted);
     margin-bottom: 0.5rem;
 }
