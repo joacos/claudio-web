@@ -1,0 +1,7 @@
+Estudio de Arquitectura – Gallardo ARQ
+Claudio Gallardo Durán | Arquitecto
+Titulado en Arquitectura y Licenciado en Arquitectura por la Universidad Mayor, Santiago (egreso 2001).
+Con una trayectoria de más de 25 años de ejercicio profesional en el sur de Chile, desarrollando su trabajo principalmente en las ciudades de Puerto Montt y Valdivia, el arquitecto ha consolidado una amplia experiencia en proyectos a lo largo de diversas regiones del país.
+Su práctica abarca el diseño arquitectónico de viviendas, locales comerciales e instalaciones industriales, así como la ejecución de obras, tasaciones, diseño de mobiliario, corretaje de propiedades, subdivisiones urbanas y rurales, y la coordinación de proyectos de especialidades. Asimismo, cuenta con una sólida experiencia en la gestión de tramitaciones documentales, normativas y aprobaciones ante Direcciones de Obras Municipales y otras instituciones públicas.
+El enfoque profesional de Gallardo ARQ se caracteriza por una lectura integral de las necesidades del cliente, considerando dimensiones espaciales, funcionales, emocionales y presupuestarias, sin perder de vista la calidad arquitectónica y la creatividad en cada solución proyectual. Su trabajo busca generar espacios que no solo respondan a requerimientos técnicos, sino que también entreguen bienestar, identidad y satisfacción en el habitar.
+Actualmente, el estudio se encuentra radicado en Valdivia y Niebla, desde donde continúa desarrollando proyectos con una fuerte conexión con el territorio, el paisaje y la arquitectura del sur de Chile.
